@@ -15,7 +15,9 @@ public class EmployeeController {
     public EmployeeController(EmployeeService service) {
         this.employeeService = service;
     }
-
+    //http://localhost:8080/employee/add?firstName=Sergey&lastName=Bondarenko&salary=200000&department=2
+    //http://localhost:8080/employee/add?firstName=Sergey1&lastName=Bondarenko1&salary=300000&department=3
+    //http://localhost:8080/employee/add?firstName=Sergey2&lastName=Bondarenko2&salary=500000&department=2
     @GetMapping("/add")
     public Employee addWorker(@RequestParam ("firstName") String firstName,
                               @RequestParam ("lastName") String lastName,

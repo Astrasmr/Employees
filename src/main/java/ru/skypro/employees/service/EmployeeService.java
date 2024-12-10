@@ -7,15 +7,14 @@ import ru.skypro.employees.exception.EmployeeNotFoundException;
 import ru.skypro.employees.exception.EmployeeStorageIsFullException;
 import ru.skypro.employees.model.Employee;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import static java.util.Collections.unmodifiableCollection;
 
 @Service
 public class EmployeeService {
-    private final Map<String, Employee> workers = new HashMap();
-    private final int maxWorkersAmount = 2;
+    private final Map<String, Employee> workers = new HashMap<>();
+    private final int maxWorkersAmount = 10;
 
     public Employee addWorker(String firstName, String lastName, int salary, int department) {
         if (workers.size() >= maxWorkersAmount) {
@@ -47,6 +46,9 @@ public class EmployeeService {
         }
         return employee;
     }
+    public Collection<Employee> findAll() {
+       return unmodifiableCollection(workers.values());
+    }
 
     private String getKey(String firstName, String lastName) {
         return firstName + lastName;
@@ -55,5 +57,4 @@ public class EmployeeService {
     private String getKey(Employee employee) {
         return getKey(employee.getName(), employee.getLastName());
     }
-
 }

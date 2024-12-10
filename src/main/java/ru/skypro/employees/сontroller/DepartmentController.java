@@ -37,7 +37,7 @@ public class DepartmentController {
         return departmentService.findAllEmployeeByDepartment(departmentId);
 
     }
-    @GetMapping ("/all")
+    @GetMapping ("/all-grouped")
     public Map<Integer, List<Employee>> findAllEmployeeGroupByDepartment (){
         return departmentService.findAllEmployeeGroupByDepartment();
     }
