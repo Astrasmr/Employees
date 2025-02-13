@@ -41,25 +41,25 @@ public class Employee {
     }
 
     @Override
-    public String toString() {
-        return "Employee{" +
-                ", name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
-    }
-
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return Objects.equals(name, employee.name) && Objects.equals(lastName, employee.lastName);
+        return salary == employee.salary && department == employee.department && Objects.equals(name, employee.name) && Objects.equals(lastName, employee.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, lastName);
+        return Objects.hash(name, lastName, salary, department);
     }
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", salary=" + salary +
+                ", department=" + department +
+                '}';
+    }
 }
